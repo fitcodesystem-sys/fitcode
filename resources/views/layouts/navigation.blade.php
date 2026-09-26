@@ -13,13 +13,15 @@
                 <!-- Navigation Links (Desktop) -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-zinc-300 hover:text-white">
+                        <x-lucide-chart-no-axes-combined class="w-4 h-4 me-2" />
                         {{ __('Dashboard') }}
                     </x-nav-link>
-
                     <x-nav-link :href="Route::has('pessoas.index') ? route('pessoas.index') : '#'" :active="request()->routeIs('pessoas*')" class="text-zinc-300 hover:text-white">
+                        <x-lucide-user class="w-4 h-4 me-2" />
                         {{ __('Pessoas') }}
                     </x-nav-link>
                     <x-nav-link :href="route('aulas.index')" :active="request()->routeIs('aulas.*')" class="text-zinc-300 hover:text-white">
+                        <x-lucide-dumbbell class="w-4 h-4 me-2" />
                         {{ __('Aulas') }}
                     </x-nav-link>
                 </div>

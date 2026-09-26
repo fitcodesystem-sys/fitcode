@@ -14,6 +14,6 @@ class Aula extends Model
         'descricao',
         'horario',
         'capacidade_maxima',
-        'instrutor',
+        'instrutor_id',
     ];
 }
