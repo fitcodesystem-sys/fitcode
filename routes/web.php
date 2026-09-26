@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AulaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,8 +12,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-route::get('/aulas', function (){
-    return view('CadastroAula');
+#route::get('/aulas', function (){
+#    return view('CadastroAula');
+#});
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('aulas', AulaController::class);
 });
 
 Route::middleware('auth')->group(function () {
