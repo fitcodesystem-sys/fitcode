@@ -5,11 +5,11 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="h-10 w-auto" />
+                    <a href="{{ route('home') }}">
+                        <x-application-logo class="h-20 w-auto mt-4" />
                     </a>
                 </div>
-
+    @auth <!-- se o usuario estiver logado -->
                 <!-- Navigation Links (Desktop) -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-zinc-300 hover:text-white">
@@ -115,4 +115,19 @@
             </div>
         </div>
     </div>
+    @endauth
+    @guest <!-- se o usuario nao estiver logado -->
+        <div class="hidden sm:flex sm:items-center sm:ms-6 flex items-center justify-end gap-4">
+            <a
+                href="{{ route('login') }}"
+                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal">
+                Log in
+            </a>
+            <a
+                    href="{{ route('register') }}"
+                    class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
+                    Register
+            </a>
+        </div>
+    @endguest
 </nav>
