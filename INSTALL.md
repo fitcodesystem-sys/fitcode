@@ -19,39 +19,37 @@ Certifique-se de ter instalado em sua máquina:
 ## ⚙️ Passo a Passo para Instalação
 
 ### 1. Clonar o Repositório
-
-```bash
-git clone [https://github.com/seu-usuario/fitcode.git](https://github.com/seu-usuario/fitcode.git)
-cd fitcode
+`git clone [https://github.com/seu-usuario/fitcode.git](https://github.com/seu-usuario/fitcode.git)`
+`cd fitcode`
 
 
 ### 2. Instalar Dependências do PHP (Composer)
-composer install
+`composer install`
 
 
 ### 3. Instalar Dependências do JavaScript (NPM)
-npm install
+`npm install`
 
 ### 4. Configurar as Variáveis de Ambiente
 Crie o arquivo .env copiando o exemplo fornecido:
 
-cp .env.example .env
+`cp .env.example .env`
 
 Abra o arquivo .env e configure as credenciais do seu banco de dados:
 
 ### 5. Gerar a Chave da Aplicação
-php artisan key:generate
+`php artisan key:generate`
 
 
 ### 6. Executar as Migrações e Seeders (Banco de Dados)
 Crie o banco de dados especificado no .env (ex: fitcode_db) e em seguida rode:
 
-php artisan migrate --seed
+`php artisan migrate --seed`
 
 ### 7. Compilar os Assets (CSS/JS)
-npm run build
+`npm run build`
 
 ### 8. Iniciar o Servidor Local
-php artisan serve
+`php artisan serve`
 
 #### Acesse no seu navegador: http://localhost:8000
