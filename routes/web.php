@@ -3,22 +3,33 @@
 use App\Http\Controllers\AulaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\VerificaAdm;
 
 Route::get('/', function () {
     return view('home');
 }) ->name('home');
 
-Route::get('/dashboard', function () {
+
+
+
+
+Route::middleware('auth','adm')->group(function () {
+     Route::resource('aulas', AulaController::class);
+     Route::get('/dashboard', function(){
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+}) ->name('dashboard');
 
-#route::get('/aulas', function (){
-#    return view('CadastroAula');
-#});
+     
+    
 
-Route::middleware(['auth'])->group(function () {
-    Route::resource('aulas', AulaController::class);
+     
+
+    
+        
+    
 });
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
