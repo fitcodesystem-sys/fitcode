@@ -1,11 +1,11 @@
--- phpMyAdmin SQL Dump
+roles-- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Out-2026 às 03:26
--- Versão do servidor: 10.4.32-MariaDB
--- versão do PHP: 8.4.26
+-- Tempo de geraÃ§Ã£o: 03-Out-2026 Ã s 03:26
+-- VersÃ£o do servidor: 10.4.32-MariaDB
+-- versÃ£o do PHP: 8.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -270,105 +270,105 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'ma', 'matheusousa.etec@gmail.com', NULL, '$2y$12$tPZ50pwORKPsTYUCAdWnZuNsWGW5DZEok2Hyy4ffRV0PTR25FxuZq', 'user', NULL, '2026-10-02 22:34:51', '2026-10-02 22:34:51'),
-(2, 'João Silva', 'joao@email.com', NULL, 'senha123', 'admin', NULL, NULL, NULL),
-(5, 'João', 'joao1@email.com', NULL, '$2y$12$FsFCyVm4mVVm.i3.Nn2ytuKYr.3BfXNODqT/2Wn1wGgZ5A9gX4.92', 'user', NULL, '2026-10-03 05:03:40', '2026-10-03 05:03:40'),
-(6, 'João', 'joao2@email.com', NULL, '$2y$12$3jn6mVB7KwDeIkdcZzYbCOg9.aWvj46EemNzZ47yE6UEQtElu9Mv.', 'user', NULL, '2026-10-03 05:33:41', '2026-10-03 05:33:41'),
-(7, 'João', 'joao3@email.com', NULL, '$2y$12$hSeHjpNsHXPhj/fiPnpxceayGbbeOkOw0g6mM9GTPz6u46d/jAN12', 'admin', NULL, '2026-10-03 05:36:30', '2026-10-03 05:36:30'),
+(2, 'JoÃ£o Silva', 'joao@email.com', NULL, 'senha123', 'admin', NULL, NULL, NULL),
+(5, 'JoÃ£o', 'joao1@email.com', NULL, '$2y$12$FsFCyVm4mVVm.i3.Nn2ytuKYr.3BfXNODqT/2Wn1wGgZ5A9gX4.92', 'user', NULL, '2026-10-03 05:03:40', '2026-10-03 05:03:40'),
+(6, 'JoÃ£o', 'joao2@email.com', NULL, '$2y$12$3jn6mVB7KwDeIkdcZzYbCOg9.aWvj46EemNzZ47yE6UEQtElu9Mv.', 'user', NULL, '2026-10-03 05:33:41', '2026-10-03 05:33:41'),
+(7, 'JoÃ£o', 'joao3@email.com', NULL, '$2y$12$hSeHjpNsHXPhj/fiPnpxceayGbbeOkOw0g6mM9GTPz6u46d/jAN12', 'admin', NULL, '2026-10-03 05:36:30', '2026-10-03 05:36:30'),
 (8, 'matheus', 'matheus@email.com', NULL, '$2y$12$Xu0g8TqRr47weOht4Zi6UeZaveXmW7OkKMajHab.8/kR2rlqNqLny', 'user', NULL, '2026-10-03 05:40:06', '2026-10-03 05:40:06'),
 (9, 'matheus', 'matheus3@email.com', NULL, '$2y$12$FbhxXg3rHi/FYo.5kt5M6O7Rl9iu68881iC5I.HFnOmjiclBlD9lW', 'user', NULL, '2026-10-03 05:42:22', '2026-10-03 05:42:22'),
 (10, 'mat', 'gabriel@emal.com', NULL, '$2y$12$89gIFVoy92XItfzICRkSQe2MAO4PU1iectu04K7bJTYzYkUbCvaL2', 'user', NULL, '2026-10-03 05:51:42', '2026-10-03 05:51:42');
 
 --
--- Índices para tabelas despejadas
+-- Ãndices para tabelas despejadas
 --
 
 --
--- Índices para tabela `aulas`
+-- Ãndices para tabela `aulas`
 --
 ALTER TABLE `aulas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `cache`
+-- Ãndices para tabela `cache`
 --
 ALTER TABLE `cache`
   ADD PRIMARY KEY (`key`);
 
 --
--- Índices para tabela `cache_locks`
+-- Ãndices para tabela `cache_locks`
 --
 ALTER TABLE `cache_locks`
   ADD PRIMARY KEY (`key`);
 
 --
--- Índices para tabela `failed_jobs`
+-- Ãndices para tabela `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Índices para tabela `jobs`
+-- Ãndices para tabela `jobs`
 --
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `jobs_queue_index` (`queue`);
 
 --
--- Índices para tabela `job_batches`
+-- Ãndices para tabela `job_batches`
 --
 ALTER TABLE `job_batches`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `migrations`
+-- Ãndices para tabela `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `model_has_permissions`
+-- Ãndices para tabela `model_has_permissions`
 --
 ALTER TABLE `model_has_permissions`
   ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
   ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
 
 --
--- Índices para tabela `model_has_roles`
+-- Ãndices para tabela `model_has_roles`
 --
 ALTER TABLE `model_has_roles`
   ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
   ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
 
 --
--- Índices para tabela `password_reset_tokens`
+-- Ãndices para tabela `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- Índices para tabela `permissions`
+-- Ãndices para tabela `permissions`
 --
 ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
--- Índices para tabela `roles`
+-- Ãndices para tabela `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
 
 --
--- Índices para tabela `role_has_permissions`
+-- Ãndices para tabela `role_has_permissions`
 --
 ALTER TABLE `role_has_permissions`
   ADD PRIMARY KEY (`permission_id`,`role_id`),
   ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
--- Índices para tabela `sessions`
+-- Ãndices para tabela `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
@@ -376,7 +376,7 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
--- Índices para tabela `users`
+-- Ãndices para tabela `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -429,7 +429,7 @@ ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- Restrições para despejos de tabelas
+-- RestriÃ§Ãµes para despejos de tabelas
 --
 
 --
