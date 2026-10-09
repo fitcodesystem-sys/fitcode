@@ -41,13 +41,37 @@
             </div>
         </div>
     </div>
-    <!--<div class="">
-        <ul class="flex items-center justify-between">
-            <li><span>Total Alunos</span></li>
-            <li><span>Total Funcionarios</span></li>
-            <li><span>Rendimento</span></li>
-            <li><span>Custos</span></li>
-            <li><span>Per Evolução</span></li>
-        </ul>
-    </div> -->
+
+    <div class="flex justify-items-center justify-center gap-20 h-28 ">
+            <div class="info-blocks">
+                <span>Total Alunos</span>
+                <span>150</span>
+            </div>
+            <div class="info-blocks">
+                <span>Total Funcionarios</span>
+                <span>30</span>
+            </div>
+            <div class="info-blocks">
+                <span>Rendimento</span>
+                <span>R$ 1500</span>
+            </div>
+            <div class="info-blocks">
+                <span>Custos</span>
+                <span>R$ 500</span>
+            </div>
+            <div class="info-blocks">
+                <span>Per Valoração</span>
+                <span>%100</span>
+            </div>
+        </div> 
+
+
+    <!--
+        <div class="grid grid-cols-5 auto-cols-max md:auto-cols-min justify-items-center h-20">
+            <div class="block w-40 px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out shadow-sm sm:rounded-lg"><span>Total Alunos</span><span>150</span></div>
+            <div class="block w-40 px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out shadow-sm sm:rounded-lg"><span>Total Funcionarios</span></div>
+            <div class="block w-40 px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out shadow-sm sm:rounded-lg"><span>Rendimento</span></div>
+            <div class="block w-40 px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out shadow-sm sm:rounded-lg"><span>Custos</span></div>
+            <div class="block w-40 px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out shadow-sm sm:rounded-lg"><span>Per Evolução</span></div>
+        </div> -->
 </x-app-layout>
