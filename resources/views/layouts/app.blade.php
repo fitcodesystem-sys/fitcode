@@ -29,7 +29,7 @@
             @endisset
 
             <!-- Page Content -->
-            <main>
+            <main class="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-6 p-4 md:p-6">
                 {{ $slot }}
             </main>
         </div>

@@ -32,46 +32,42 @@
             </nav>
         </header>
     </x-slot>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("Você está logado!") }}
-                </div>
-            </div>
-        </div>
+    <div class="text-white justify-items-start">
+        <p>
+            {{ __("Olá Administrador!") }}
+        </p>
     </div>
 
-    <div class="flex justify-items-center justify-center gap-20 h-28 ">
-            <div class="info-blocks">
-                <span>Total Alunos</span>
-                <span>150</span>
+    <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div class="info-blocks p-5 box-border">
+                <span class="text-sm font-medium text-muted-foreground">Alunos ativos</span>
+                <span class="mt-4 text-2xl font-bold tracking-tight text-foreground">150</span>
             </div>
-            <div class="info-blocks">
-                <span>Total Funcionarios</span>
-                <span>30</span>
+            <div class="info-blocks p-5 box-border">
+                <span>Total de funcionarios</span>
+                <span class="mt-4 text-2xl font-bold tracking-tight text-foreground">30</span>
             </div>
-            <div class="info-blocks">
-                <span>Rendimento</span>
-                <span>R$ 1500</span>
+            <div class="info-blocks p-5 box-border">
+                <span>Receita</span>
+                <span class="mt-4 text-2xl font-bold tracking-tight text-foreground">R$ 1500</span>
             </div>
-            <div class="info-blocks">
+            <div class="info-blocks p-5 box-border">
                 <span>Custos</span>
-                <span>R$ 500</span>
+                <span class="mt-4 text-2xl font-bold tracking-tight text-foreground">R$ 500</span>
             </div>
-            <div class="info-blocks">
-                <span>Per Valoração</span>
-                <span>%100</span>
+    </section>
+
+    <section class="grid gap-6 xl:grid-cols-3 sm:grid-cols-1">
+        <div x-data="mensalidadeChart" class="w-full xl:col-span-2">
+            <div class="relative h-80 rounded-xl border border-gray-700 p-5 box-border">
+                <canvas x-ref="canvas"></canvas>
             </div>
-        </div> 
+        </div>
+        <div x-data="aulasChart" class="w-full">
+            <div class="relative h-80 rounded-xl border border-gray-700 p-5 box-border">
+                <canvas x-ref="canvas"></canvas>
+            </div>
+        </div>
+    </section>
 
-
-    <!--
-        <div class="grid grid-cols-5 auto-cols-max md:auto-cols-min justify-items-center h-20">
-            <div class="block w-40 px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out shadow-sm sm:rounded-lg"><span>Total Alunos</span><span>150</span></div>
-            <div class="block w-40 px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out shadow-sm sm:rounded-lg"><span>Total Funcionarios</span></div>
-            <div class="block w-40 px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out shadow-sm sm:rounded-lg"><span>Rendimento</span></div>
-            <div class="block w-40 px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out shadow-sm sm:rounded-lg"><span>Custos</span></div>
-            <div class="block w-40 px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out shadow-sm sm:rounded-lg"><span>Per Evolução</span></div>
-        </div> -->
 </x-app-layout>
