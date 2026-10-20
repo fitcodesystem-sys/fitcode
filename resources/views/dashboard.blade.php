@@ -19,10 +19,10 @@
                             <x-slot name="content">
                                 <div>
                                 <ul>
-                                    <li class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Ultimo Dia</li>
-                                    <li class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Ultima Semana</li>
-                                    <li class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Ultimo Mês</li>
-                                    <li class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Desde Sempre</li>
+                                    <li class="metrics">Ultimo Dia</li>
+                                    <li class="metrics">Ultima Semana</li>
+                                    <li class="metrics">Ultimo Mês</li>
+                                    <li class="metrics">Desde Sempre</li>
                                 </ul>
                                 </div>
                             </x-slot>
@@ -40,7 +40,7 @@
 
     <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             <div class="info-blocks p-5 box-border">
-                <span class="text-sm font-medium text-muted-foreground">Alunos ativos</span>
+                <span>Alunos ativos</span>
                 <span class="mt-4 text-2xl font-bold tracking-tight text-foreground">150</span>
             </div>
             <div class="info-blocks p-5 box-border">
@@ -64,6 +64,13 @@
             </div>
         </div>
         <div x-data="aulasChart" class="w-full">
+            <div class="relative h-80 rounded-xl border border-gray-700 p-5 box-border">
+                <canvas x-ref="canvas"></canvas>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div x-data="mensalidadeChart" class="w-full xl:col-span-2">
             <div class="relative h-80 rounded-xl border border-gray-700 p-5 box-border">
                 <canvas x-ref="canvas"></canvas>
             </div>
