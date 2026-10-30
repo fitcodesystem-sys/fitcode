@@ -7,26 +7,31 @@
             <nav>
                 <ul>
                     <li>
+                        <div x-data="dashboardLogic">
                         <x-dropdown align="right" width="48">
-                            <x-slot name="trigger">
+                            <x-slot  name="trigger">
                                 <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-zinc-300 bg-zinc-800 hover:text-white hover:bg-zinc-700 focus:outline-none transition ease-in-out duration-150">
-                                    <span>Ultimo Dia</span>
+                                    <span x-text="period.label"></span>
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                     </svg>
                                 </button>
                             </x-slot>
                             <x-slot name="content">
-                                <div>
-                                <ul>
-                                    <li class="metrics">Ultimo Dia</li>
-                                    <li class="metrics">Ultima Semana</li>
-                                    <li class="metrics">Ultimo Mês</li>
-                                    <li class="metrics">Desde Sempre</li>
-                                </ul>
-                                </div>
+                                <template x-for="(period, key) in periods" :key="key">
+
+                                    <button
+                                        @click="selectedPeriod = key"
+                                        :class="selectedPeriod === key"
+                                        class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                                    >
+                                        <span x-text="period.label"></span>
+                                    </button>
+
+                                </template>
                             </x-slot>
                         </x-dropdown>
+                        </div>
                     </li>
                 </ul>
             </nav>
@@ -38,23 +43,13 @@
         </p>
     </div>
 
-    <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+    <section x-data="dashboardLogic" class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <template x-for="(metric, key) in baseMetrics" :key="key">
             <div class="info-blocks p-5 box-border">
-                <span>Alunos ativos</span>
-                <span class="mt-4 text-2xl font-bold tracking-tight text-foreground">150</span>
+                <span x-text="metric.label"></span>
+                <span x-text="metric.value" class="mt-4 text-2xl font-bold tracking-tight text-foreground"></span>
             </div>
-            <div class="info-blocks p-5 box-border">
-                <span>Total de funcionarios</span>
-                <span class="mt-4 text-2xl font-bold tracking-tight text-foreground">30</span>
-            </div>
-            <div class="info-blocks p-5 box-border">
-                <span>Receita</span>
-                <span class="mt-4 text-2xl font-bold tracking-tight text-foreground">R$ 1500</span>
-            </div>
-            <div class="info-blocks p-5 box-border">
-                <span>Custos</span>
-                <span class="mt-4 text-2xl font-bold tracking-tight text-foreground">R$ 500</span>
-            </div>
+        </template>
     </section>
 
     <section class="grid gap-6 xl:grid-cols-3 sm:grid-cols-1">
