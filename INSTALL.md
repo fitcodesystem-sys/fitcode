@@ -53,3 +53,7 @@ Crie o banco de dados especificado no .env (ex: fitcode_db) e em seguida rode:
 `php artisan serve`
 
 #### Acesse no seu navegador: http://localhost:8000
+
+### ATENÇÃO:Para uma melhor experiência, logue como admin:
+email:joao3@email.com
+senha:senha123

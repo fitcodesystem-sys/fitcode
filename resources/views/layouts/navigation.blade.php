@@ -11,6 +11,7 @@
                 </div>
     @auth <!-- se o usuario estiver logado -->
                 <!-- Navigation Links (Desktop) -->
+            @if(auth()->user()->role === 'admin')     
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-zinc-300 hover:text-white">
                         <x-lucide-chart-no-axes-combined class="w-4 h-4 me-2" />
@@ -25,6 +26,7 @@
                         {{ __('Aulas') }}
                     </x-nav-link>
                 </div>
+            @endif
             </div>
 
             <!-- Settings Dropdown -->
