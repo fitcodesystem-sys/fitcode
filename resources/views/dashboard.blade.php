@@ -17,8 +17,8 @@
                                 </button>
                             </x-slot>
                             <x-slot name="content">
+                                <!-- geração do selecionador de periodo -->
                                 <template x-for="(period, key) in periods" :key="key">
-
                                     <button
                                         @click="selectedPeriod = key"
                                         :class="selectedPeriod === key"
@@ -26,7 +26,6 @@
                                     >
                                         <span x-text="period.label"></span>
                                     </button>
-
                                 </template>
                             </x-slot>
                         </x-dropdown>
@@ -42,6 +41,7 @@
     </div>
 
     <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <!-- geração dos cartões -->
         <template x-for="(metric, key) in metrics" :key="key">
             <div class="info-blocks p-5 box-border">
                 <span x-text="metric.label"></span>
@@ -50,6 +50,7 @@
         </template>
     </section>
 
+    <!-- charts -->
     <section class="grid gap-6 xl:grid-cols-3 sm:grid-cols-1">
         <div x-data="mensalidadeChart" class="w-full xl:col-span-2">
             <div class="relative h-80 rounded-xl border border-gray-700 p-5 box-border">

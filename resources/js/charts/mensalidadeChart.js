@@ -23,9 +23,7 @@ export default function mensalidadeChart() {
                     {
                         label: 'IC',
                         data: [30, 22, 32, 20, 12, 32, 12, 24, 23, 42, 42, 43]
-                    }
-                
-                    
+                    }    
                     ],
                 },
                 options: {

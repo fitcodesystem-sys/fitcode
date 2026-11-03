@@ -33,11 +33,11 @@ export default function dashboardLogic() {
             },
             month: {
                 label: 'Último mês',
-                values: ['108', 'R$ 32.480', '186', '92,4%'],
+                values: ['248', 'R$ 32.480', '186', '92,4%'],
             },
             year: {
                 label: 'Último ano',
-                values: ['248', 'R$ 91.620', '524', '91,7%'],
+                values: ['300', 'R$ 91.620', '524', '91,7%'],
             }
         },
 
@@ -45,6 +45,7 @@ export default function dashboardLogic() {
             return this.periods[this.selectedPeriod];
         },
 
+        //cria um array a partir de baseMetrics e period
         get metrics() {
             return this.baseMetrics.map((metric, index) => ({
                 ...metric,
@@ -56,12 +57,5 @@ export default function dashboardLogic() {
                 detail: this.period.detail
             }));
         },
-
-        modalities: [
-            { name: 'Funcional', value: 86},
-            { name: 'Musculação', value: 74},
-            { name: 'Pilates', value: 62},
-            { name: 'HIIT', value: 58}
-        ]
     };
 }
