@@ -25,15 +25,15 @@ export default function dashboardLogic() {
         periods: {
             today: {
                 label: 'Hoje',
-                values: ['248', 'R$ 1.285', '12', '94,8%'],
+                values: ['2', 'R$ 1.285', '12', '94,8%'],
             },
             week: {
                 label: 'Últimos 7 dias',
-                values: ['248', 'R$ 8.960', '46', '93,1%'],
+                values: ['28', 'R$ 8.960', '46', '93,1%'],
             },
             month: {
                 label: 'Último mês',
-                values: ['248', 'R$ 32.480', '186', '92,4%'],
+                values: ['108', 'R$ 32.480', '186', '92,4%'],
             },
             year: {
                 label: 'Último ano',

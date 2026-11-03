@@ -7,7 +7,6 @@
             <nav>
                 <ul>
                     <li>
-                        <div x-data="dashboardLogic">
                         <x-dropdown align="right" width="48">
                             <x-slot  name="trigger">
                                 <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-zinc-300 bg-zinc-800 hover:text-white hover:bg-zinc-700 focus:outline-none transition ease-in-out duration-150">
@@ -31,7 +30,6 @@
                                 </template>
                             </x-slot>
                         </x-dropdown>
-                        </div>
                     </li>
                 </ul>
             </nav>
@@ -43,8 +41,8 @@
         </p>
     </div>
 
-    <section x-data="dashboardLogic" class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <template x-for="(metric, key) in baseMetrics" :key="key">
+    <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <template x-for="(metric, key) in metrics" :key="key">
             <div class="info-blocks p-5 box-border">
                 <span x-text="metric.label"></span>
                 <span x-text="metric.value" class="mt-4 text-2xl font-bold tracking-tight text-foreground"></span>

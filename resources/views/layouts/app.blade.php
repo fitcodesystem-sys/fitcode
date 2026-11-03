@@ -16,7 +16,7 @@
     </head>
     <body class="font-sans antialiased">
         <!-- app.blade -->
-        <div class="min-h-screen bg-gray-900">
+        <div x-data="dashboardLogic" class="min-h-screen bg-gray-900">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
