@@ -6,6 +6,7 @@ use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets;
  use App\Http\Middleware\VerificaAdm;
+ use App\Http\Middleware\Localization;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -21,7 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
        
 
-    
+     $middleware->alias(['Localization'=>Localization::class,]);
      $middleware->alias(['adm'=>VerificaAdm::class,
      ]);
 })
