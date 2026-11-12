@@ -29,7 +29,7 @@ class AulaController extends Controller
 
         Aula::create($request->all());
 
-        return redirect()->route('aulas.index')->with('success', 'Aula cadastrada com sucesso!');
+        return redirect()->route('aulas.index')->with('success', __('Aula cadastrada com sucesso!'));
     }
 
 
@@ -56,7 +56,7 @@ class AulaController extends Controller
 
         $aula->update($request->all());
 
-        return redirect()->route('aulas.index')->with('success', 'Aula atualizada com sucesso!');
+        return redirect()->route('aulas.index')->with('success', __('Aula atualizada com sucesso!'));
     }
 
 
@@ -64,6 +64,6 @@ class AulaController extends Controller
     public function destroy(Aula $aula)
     {
         $aula->delete();
-        return redirect()->route('aulas.index')->with('success', 'Aula removida!');
+        return redirect()->route('aulas.index')->with('success', __('Aula removida!'));
     }
 }

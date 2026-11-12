@@ -15,14 +15,14 @@
                     <!-- Nome da Aula -->
                     <div>
                         <x-input-label for="nome" :value="__('Nome da Aula')" />
-                        <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome')" required autofocus />
+                        <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome')"  autofocus />
                         <x-input-error :messages="$errors->get('nome')" class="mt-2" />
                     </div>
 
                     <!-- Instrutor -->
                     <div>
                         <x-input-label for="instrutor_id" :value="__('Instrutor')" />
-                        <x-text-input id="instrutor_id" name="instrutor_id" type="text" class="mt-1 block w-full" :value="old('instrutor_id')" required />
+                        <x-text-input id="instrutor_id" name="instrutor_id" type="text" class="mt-1 block w-full" :value="old('instrutor_id')"  />
                         <x-input-error :messages="$errors->get('instrutor_id')" class="mt-2" />
                     </div>
 
@@ -30,14 +30,14 @@
                         <!-- Horário -->
                         <div>
                             <x-input-label for="horario" :value="__('Horário (ex: Seg/Qua 19:00)')" />
-                            <x-text-input id="horario" name="horario" type="text" class="mt-1 block w-full" :value="old('horario')" required />
+                            <x-text-input id="horario" name="horario" type="text" class="mt-1 block w-full" :value="old('horario')"  />
                             <x-input-error :messages="$errors->get('horario')" class="mt-2" />
                         </div>
 
                         <!-- Capacidade Máxima -->
                         <div>
                             <x-input-label for="capacidade_maxima" :value="__('Capacidade Máxima')" />
-                            <x-text-input id="capacidade_maxima" name="capacidade_maxima" type="number" class="mt-1 block w-full" min="1" :value="old('capacidade_maxima')" required />
+                            <x-text-input id="capacidade_maxima" name="capacidade_maxima" type="number" class="mt-1 block w-full" min="1" :value="old('capacidade_maxima')"  />
                             <x-input-error :messages="$errors->get('capacidade_maxima')" class="mt-2" />
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                     <!-- Botões -->
                     <div class="flex items-center justify-end space-x-4">
                         <a href="{{ route('aulas.index') }}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 underline">
-                            Cancelar
+                            {{ __('Cancelar') }}
                         </a>
                         <x-primary-button>
                             {{ __('Salvar Aula') }}

@@ -9,29 +9,29 @@ export default function aulasChart() {
     return {
         modalitiesPeriod: {
             today: [
-                { name: 'Musculação', value: 30 },
-                { name: 'Funcional', value: 15 },
+                { name: window.traducoes.mus, value: 30 },
+                { name: window.traducoes.funcional, value: 15 },
                 { name: 'Pilates', value: 10 },
                 { name: 'Hit', value: 5 },               
             ],
 
             week: [
-                { name: 'Musculação', value: 120 },
-                { name: 'Funcional', value: 80 },
+                { name: window.traducoes.mus, value: 120 },
+                { name: window.traducoes.funcional, value: 80 },
                 { name: 'Pilates', value: 60 },
                 { name: 'Hit', value: 10 },
             ],
 
             month: [
-                { name: 'Musculação', value: 300 },
-                { name: 'Funcional', value: 180 },
+                { name: window.traducoes.mus, value: 300 },
+                { name: window.traducoes.funcional, value: 180 },
                 { name: 'Pilates', value: 150 },
                 { name: 'Hit', value: 120 },
             ],
 
             year: [
-                { name: 'Musculação', value: 850 },
-                { name: 'Funcional', value: 500 },
+                { name: window.traducoes.mus, value: 850 },
+                { name: window.traducoes.funcional, value: 500 },
                 { name: 'Pilates', value: 400 },
                 { name: 'Hit', value: 200 },
             ],
@@ -54,7 +54,7 @@ export default function aulasChart() {
                 data: {
                     labels: modalities.map(({ name }) => name),
                     datasets: [{
-                        label: 'Alunos',
+                        label: window.traducoes.alunos,
                         data: modalities.map(({ value }) => value),
                         }
                     ],

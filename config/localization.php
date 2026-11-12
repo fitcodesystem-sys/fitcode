@@ -2,7 +2,7 @@
 
 return [
     'locales'=> [
+        'pt_BR',
         'en',
-        'pt-br',
     ]
 ];

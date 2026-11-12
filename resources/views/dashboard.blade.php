@@ -1,4 +1,12 @@
-<x-app-layout>
+<script>
+    window.translations = {
+        students: @json(__('Alunos')),
+        revenue: @json(__('Receita')),
+        classes: @json(__('Aulas realizadas')),
+        attendance: @json(__('Taxa de presença')),
+    };
+</script>
+<x-dash>
     <x-slot name="header">
         <header class="flex items-center justify-between">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -71,4 +79,4 @@
         </div>
     </section>
 
-</x-app-layout>
+</x-dash>

@@ -5,38 +5,38 @@ export default function dashboardLogic() {
 
         baseMetrics: [
             {
-                label: 'Alunos ativos',
+                label: window.traducoes.alunosAtivos,
                 value: '248',
             },
             {
-                label: 'Receita mensal',
+                label: window.traducoes.receitames,
                 value: 'R$ 32.480',
             },
             {
-                label: 'Aulas realizadas',
+                label: window.traducoes.aulasRe,
                 value: '186',
             },
             {
-                label: 'Taxa de presença',
+                label: window.traducoes.taxaP,
                 value: '92,4%',
             }
         ],
 
         periods: {
             today: {
-                label: 'Hoje',
+                label: window.traducoes.hoje,
                 values: ['2', 'R$ 1.285', '12', '94,8%'],
             },
             week: {
-                label: 'Últimos 7 dias',
+                label: window.traducoes.ulS,
                 values: ['28', 'R$ 8.960', '46', '93,1%'],
             },
             month: {
-                label: 'Último mês',
+                label: window.traducoes.ulMes,
                 values: ['248', 'R$ 32.480', '186', '92,4%'],
             },
             year: {
-                label: 'Último ano',
+                label: window.traducoes.ulA,
                 values: ['300', 'R$ 91.620', '524', '91,7%'],
             }
         },
@@ -50,7 +50,7 @@ export default function dashboardLogic() {
             return this.baseMetrics.map((metric, index) => ({
                 ...metric,
                 label: index === 1
-                    ? 'Receita no período'
+                    ? window.traducoes.receita
                     : metric.label,
                 value: this.period.values[index],
                 change: this.period.change,
