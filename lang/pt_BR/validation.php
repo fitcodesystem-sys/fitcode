@@ -235,7 +235,10 @@ return [
         'modality' => 'modalidade',
         'category' => 'categoria',
         'blood_type' => 'tipo sanguíneo',
-        'birth_date' => 'data de nascimento'
+        'birth_date' => 'data de nascimento',
+        'instrutor_id' => 'instrutor',
+        'horario' => 'horário',
+        'capacidade_maxima' => 'capacidade máxima'
     ],
 
 ];

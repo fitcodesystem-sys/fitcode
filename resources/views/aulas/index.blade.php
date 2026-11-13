@@ -6,27 +6,27 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            <h2 class="text-xl font-semibold leading-tight text-white">
                 {{ __('Gerenciar Aulas') }}
             </h2>
-            <a href="{{ route('aulas.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+            <a href="{{ route('aulas.create') }}" class="button button-primary">
                 {{ __('+ Nova Aula') }}
             </a>
         </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-4 sm:px-2">
+        <div class="mx-auto max-w-7xl">
             {{-- Mensagem de Sucesso --}}
             @if (session('success'))
-                <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                <div class="mb-4 alert-success">
                     {{ session('success') }}
                 </div>
             @endif
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                 @if ($aulas->isEmpty())
-                    <p class="text-gray-500 dark:text-gray-400 text-center py-4">{{ __('Nenhuma aula cadastrada até o momento.') }}</p>
+                    <p class="py-10 text-center text-zinc-400">{{ __('Nenhuma aula cadastrada até o momento.') }}</p>
                 @else
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -41,7 +41,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($aulas as $aula)
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <tr class="bg-white border-b bg-zinc-800/60 border-zinc-800 hover:bg-zinc-800/40">
                                         <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                             {{ $aula->nome }}
                                         </td>
@@ -49,8 +49,8 @@
                                         <td class="px-6 py-4">{{ $aula->horario }}</td>
                                         <td class="px-6 py-4">{{ $aula->capacidade_maxima }} {{ __('alunos') }}</td>
                                         <td class="px-6 py-4 text-right">
-                                            <div class="flex items-center justify-end space-x-3">
-                                            <a href="{{ route('aulas.edit', $aula) }}" class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium">
+                                            <div class="flex items-center justify-end gap-3 justify-items-center">
+                                            <a href="{{ route('aulas.edit', $aula) }}" class="text-indigo-400 transition hover:text-indigo-300">
                                                 <x-lucide-pencil class="w-5 h-5" />
                                             </a>
                                             <form action="{{ route('aulas.destroy', $aula) }}" method="POST" onsubmit="return confirm(window.traducao.excluirAula);" class="inline">

@@ -17,7 +17,7 @@
                     <li>
                         <x-dropdown align="right" width="48">
                             <x-slot  name="trigger">
-                                <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-zinc-300 bg-zinc-800 hover:text-white hover:bg-zinc-700 focus:outline-none transition ease-in-out duration-150">
+                                <button class="button border border-zinc-700 bg-zinc-900 normal-case tracking-normal text-zinc-200 hover:bg-zinc-800 focus:ring-indigo-500">
                                     <span x-text="period.label"></span>
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -30,7 +30,7 @@
                                     <button
                                         @click="selectedPeriod = key"
                                         :class="selectedPeriod === key"
-                                        class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                                        class="dropdown-item"
                                     >
                                         <span x-text="period.label"></span>
                                     </button>
@@ -42,7 +42,7 @@
             </nav>
         </header>
     </x-slot>
-    <div class="text-white justify-items-start">
+    <div class="text-zinc-200 font-medium justify-items-start">
         <p>
             {{ __("Olá Administrador!") }}
         </p>
@@ -59,24 +59,10 @@
     </section>
 
     <!-- charts -->
-    <section class="grid gap-6 xl:grid-cols-3 sm:grid-cols-1">
-        <div x-data="mensalidadeChart" class="w-full xl:col-span-2">
-            <div class="relative h-80 rounded-xl border border-gray-700 p-5 box-border">
-                <canvas x-ref="canvas"></canvas>
-            </div>
-        </div>
-        <div x-data="aulasChart" class="w-full">
-            <div class="relative h-80 rounded-xl border border-gray-700 p-5 box-border">
+        <div x-data="aulasChart" class="grid gap-6 xl:grid-cols-1 sm:grid-cols-1">
+            <div class="relative h-80 rounded-xl border border-zinc-800 bg-zinc-900 p-5 shadow-sm">
                 <canvas x-ref="canvas"></canvas>
             </div>
         </div>
     </section>
-    <section>
-        <div x-data="mensalidadeChart" class="w-full xl:col-span-2">
-            <div class="relative h-80 rounded-xl border border-gray-700 p-5 box-border">
-                <canvas x-ref="canvas"></canvas>
-            </div>
-        </div>
-    </section>
-
 </x-dash>

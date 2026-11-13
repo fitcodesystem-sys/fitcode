@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-zinc-900 border-b border-zinc-800">
+<nav x-data="{ open: false }" class="border-b border-zinc-800 bg-zinc-950">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -8,7 +8,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-application-logo class="h-10 w-auto" />
+                        <x-application-logoT class="h-40 w-auto mb-28 mt-2" />
                     </a>
                 </div>
 

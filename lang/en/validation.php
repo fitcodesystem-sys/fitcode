@@ -195,6 +195,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'nome' => 'name',
+        'instrutor_id' => 'coach',
+        'horario' => 'time',
+        'capacidade_maxima' => 'maximum capacity'
+    ],
 
 ];
