@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-4">
+        <div class="mx-auto w-full max-w-3xl rounded-xl border border-zinc-800 bg-zinc-900 p-5 shadow-sm sm:p-6">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                 
                 <form action="{{ route('aulas.store') }}" method="POST" class="space-y-6">
@@ -50,7 +50,7 @@
                     </div>
 
                     <!-- Botões -->
-                    <div class="flex items-center justify-end space-x-4">
+                    <div class="flex items-center justify-end gap-4 border-t border-zinc-800 pt-5">
                         <a href="{{ route('aulas.index') }}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 underline">
                             {{ __('Cancelar') }}
                         </a>
