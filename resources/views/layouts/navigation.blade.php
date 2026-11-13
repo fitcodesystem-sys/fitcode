@@ -152,7 +152,7 @@
                         {{ __('Aulas') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="Route::has('matriculas.index') ? route('matriculas.index') : '#'" :active="request()->routeIs('matriculas*')" class="text-zinc-300">
+                    <x-responsive-nav-link :href="Route::has('matricula.index') ? route('matricula.index') : '#'" :active="request()->routeIs('matricula')" class="text-zinc-300">
                         {{ __('navigation.matriculas') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="Route::has('relatorios.index') ? route('relatorios.index') : '#'" :active="request()->routeIs('relatorios*')" class="text-zinc-300">
