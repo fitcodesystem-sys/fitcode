@@ -31,11 +31,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div x-data="dashboardLogic" class="ui-app-shell">
+        <div x-data="dashboardLogic" class="flex min-h-screen flex-col bg-zinc-900">
             @include('layouts.navigation')
 
             @isset($header)
-                <header class="border-b border-zinc-800 bg-zinc-950/80">
+                <header class="border-b border-zinc-900 bg-zinc-950/80">
                     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>

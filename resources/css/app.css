@@ -4,9 +4,47 @@
 
 @layer components{
     .info-blocks{
-        @apply flex flex-col rounded-xl border items-start p-5 px-4 py-2 leading-6 bg-gray-800 text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-900 transition duration-150 ease-in-out shadow-sm sm:rounded-lg;
+        @apply flex flex-col items-start rounded-xl border border-zinc-800 bg-zinc-900 p-5 text-zinc-300 shadow-sm transition hover:border-zinc-700 hover:bg-zinc-800;
     }
     .metrics{
-        @apply block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out
+        @apply block w-full px-4 py-2 text-left text-sm leading-5 text-zinc-300 transition hover:bg-zinc-800 hover:text-white focus:bg-zinc-800 focus:outline-none;
+    }
+    .button {
+        @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-xs font-semibold uppercase tracking-widest transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-950 disabled:cursor-not-allowed disabled:opacity-50;
+    }
+    .button-primary {
+        @apply bg-indigo-600 text-white hover:bg-indigo-500 focus:ring-indigo-500 active:bg-indigo-700;
+    }
+    .button-secondary {
+        @apply border border-zinc-700 bg-zinc-800 text-zinc-100 shadow-sm hover:bg-zinc-700 focus:ring-indigo-500;
+    }
+    .dropdown-item {
+        @apply block w-full px-4 py-2 text-left text-sm leading-5 text-zinc-300 transition hover:bg-zinc-800 hover:text-white focus:bg-zinc-800 focus:outline-none;
+    }
+    .input {
+        @apply rounded-md border-zinc-700 bg-zinc-950 text-zinc-100 placeholder:text-zinc-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
+    }
+    .link {
+        @apply text-sm font-medium text-zinc-400 underline-offset-4 transition hover:text-white hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500;
+    }
+    .nav-link {
+        @apply inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium leading-5 text-zinc-400 transition hover:border-zinc-600 hover:text-white focus:outline-none focus:text-white;
+    }
+    .nav-link-active {
+        @apply border-indigo-400 text-white;
+    }
+    .nav-link-mobile {
+        @apply block w-full border-l-4 border-transparent px-4 py-2 text-left text-base font-medium text-zinc-400 transition hover:border-zinc-700 hover:bg-zinc-800 hover:text-white focus:outline-none focus:text-white;
+    }
+    .dropdown-item {
+        @apply block w-full px-4 py-2 text-left text-sm leading-5 text-zinc-300 transition hover:bg-zinc-800 hover:text-white focus:bg-zinc-800 focus:outline-none;
+    }
+
+    .alert-success {
+        @apply rounded-lg border border-emerald-800 bg-emerald-950 px-4 py-3 text-sm text-emerald-200;
+    }
+
+    .modal {
+        @apply overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-100 shadow-xl shadow-black/40;
     }
 }

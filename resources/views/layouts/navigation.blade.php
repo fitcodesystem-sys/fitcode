@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-zinc-900 border-b border-zinc-800">
+<nav x-data="{ open: false }" class="border-b border-zinc-800 bg-zinc-950">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-application-logo class="h-20 w-auto mt-4" />
+                        <x-application-logoT class="h-40 w-auto mb-28 mt-2" />
                     </a>
                 </div>
     @auth <!-- se o usuario estiver logado -->
@@ -31,10 +31,10 @@
 
             <!-- language dropdown -->
 <section class="flex">
-    <div class="flex sm:items-center sm:ms-6 ">
+    <div class="hidden sm:items-center sm:flex">
         <x-dropdown align="right" width="48">
             <x-slot name="trigger">
-                <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-zinc-300 bg-zinc-800 hover:text-white hover:bg-zinc-700 focus:outline-none transition ease-in-out duration-150">
+                <button class="button border border-zinc-700 bg-zinc-900 normal-case tracking-normal text-zinc-200 hover:bg-zinc-800 focus:ring-indigo-500">
                     <div>{{ __('Set Language') }}</div>
 
                     <div class="ms-1">
@@ -58,7 +58,7 @@
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-zinc-300 bg-zinc-800 hover:text-white hover:bg-zinc-700 focus:outline-none transition ease-in-out duration-150">
+                        <button class="button border border-zinc-700 bg-zinc-900 normal-case tracking-normal text-zinc-200 hover:bg-zinc-800 focus:ring-indigo-500">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
@@ -101,7 +101,7 @@
     </div>
 
     <!-- Responsive Navigation Menu (Mobile) -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-zinc-900 border-t border-zinc-800">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden border-zinc-800 bg-zinc-950">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-zinc-300">
                 {{ __('Dashboard') }}
@@ -144,7 +144,7 @@
     </div>
     @endauth
     @guest <!-- se o usuario nao estiver logado -->
-        <div class="sm:flex sm:items-center sm:ms-6 flex items-center justify-end gap-4">
+        <div class="sm:items-center sm:ms-6 flex items-center justify-end gap-4">
             <a
                 href="{{ route('login') }}"
                 class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal">
