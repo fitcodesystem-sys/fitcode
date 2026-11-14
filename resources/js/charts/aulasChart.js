@@ -36,7 +36,7 @@ export default function aulasChart() {
         },
 
         updateChart(period) {
-            //
+            // :(
         },
 
         destroy() {
