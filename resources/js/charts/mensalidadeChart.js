@@ -17,7 +17,7 @@ export default function mensalidadeChart() {
                         data: [10, 10, 22, 20, 12, 32, 12, 24, 23, 42, 42, 43],
                     },
                     {
-                        label: 'IAP',
+                        label: 'ZAP',
                         data: [20, 10, 30, 20, 12, 32, 12, 24, 23, 42, 42, 43]
                     },
                     {

@@ -51,4 +51,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function aulas(){
+        return $this->belongsToMany(Aula::class);
+    }
 }

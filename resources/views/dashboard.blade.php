@@ -1,4 +1,12 @@
 <script>
+    // serve para pegar os dados enviados do controller e jogar para variaveis que irão alimentar os gráficos
+    window.dadosAulas = {
+        labels:
+        @json($aulas->pluck('nome')),
+       
+        dados:
+        @json($aulas->pluck('users_count'))
+    }
     window.translations = {
         students: @json(__('Alunos')),
         revenue: @json(__('Receita')),
@@ -65,4 +73,5 @@
             </div>
         </div>
     </section>
+
 </x-dash>
