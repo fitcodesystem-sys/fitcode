@@ -18,7 +18,7 @@
         <div class="flex min-h-screen flex-col items-center justify-center bg-zinc-950 px-4 py-8">
             <div>
                 <a href="/">
-                    <x-application-logo class="h-24 w-auto  fill-current text-indigo-400" />
+                    <x-application-logo class="h-24 w-auto  fill-current text-rose-400" />
                 </a>
             </div>
 

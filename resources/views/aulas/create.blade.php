@@ -45,7 +45,7 @@
                     <!-- Descrição -->
                     <div>
                         <x-input-label for="descricao" :value="__('Descrição (Opcional)')" />
-                        <textarea id="descricao" name="descricao" rows="3" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">{{ old('descricao') }}</textarea>
+                        <textarea id="descricao" name="descricao" rows="3" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-rose-500 dark:focus:border-rose-600 focus:ring-rose-500 dark:focus:ring-rose-600 rounded-md shadow-sm">{{ old('descricao') }}</textarea>
                         <x-input-error :messages="$errors->get('descricao')" class="mt-2" />
                     </div>
 

@@ -48,7 +48,7 @@
                                         <td class="px-6 py-4">{{ $aula->horario }}</td>
                                         <td class="px-6 py-4 text-right">
                                             <div class="flex items-center justify-end gap-3 justify-items-center">
-                                            <a href="{{ route('aulas.edit', $aula) }}" class="text-indigo-400 transition hover:text-indigo-300">
+                                            <a href="{{ route('aulas.edit', $aula) }}" class="text-rose-400 transition hover:text-rose-300">
                                                 <x-lucide-pencil class="w-5 h-5" />
                                             </a>
                                             <form action="{{ route('aulas.destroy', $aula) }}" method="POST" onsubmit="return confirm(window.traducao.excluirPessoa);" class="inline">

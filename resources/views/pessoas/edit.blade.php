@@ -16,7 +16,7 @@
                     <!-- checkbox instrutor -->
                     <div class="flex mt-4 justify-end">
                         <label for="eh_instrutor" class="inline-flex items-center">
-                            <input id="eh_instrutor" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="eh_instrutor">
+                            <input id="eh_instrutor" type="checkbox" class="rounded border-gray-300 text-rose-600 shadow-sm focus:ring-rose-500" name="eh_instrutor">
                             <span class="ms-2 text-sm text-zinc-400">{{ __('É instrutor?') }}</span>
                         </label>
                     </div>
@@ -46,7 +46,7 @@
                     <!-- Descrição -->
                     <div>
                         <x-input-label for="descricao" :value="__('Descrição (Opcional)')" />
-                        <textarea id="descricao" name="descricao" rows="3" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">{{ old('descricao', $aula->descricao) }}</textarea>
+                        <textarea id="descricao" name="descricao" rows="3" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-rose-500 dark:focus:border-rose-600 focus:ring-rose-500 dark:focus:ring-rose-600 rounded-md shadow-sm">{{ old('descricao', $aula->descricao) }}</textarea>
                         <x-input-error :messages="$errors->get('descricao')" class="mt-2" />
                     </div>
 

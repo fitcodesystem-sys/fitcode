@@ -33,7 +33,7 @@
                     <p class="mt-2 text-sm text-zinc-300">
                         {{ __('Seu endereço de e-mail não foi verificado.') }}
 
-                        <button form="send-verification" class="text-sm font-medium text-zinc-400 underline-offset-4 transition hover:text-white hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <button form="send-verification" class="text-sm font-medium text-zinc-400 underline-offset-4 transition hover:text-white hover:underline focus:outline-none focus:ring-2 focus:ring-rose-500">
                             {{ __('Clique aqui para reenviar o e-mail de verificação.') }}
                         </button>
                     </p>

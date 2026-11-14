@@ -13,25 +13,25 @@
         @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-xs font-semibold uppercase tracking-widest transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-950 disabled:cursor-not-allowed disabled:opacity-50;
     }
     .button-primary {
-        @apply bg-indigo-600 text-white hover:bg-indigo-500 focus:ring-indigo-500 active:bg-indigo-700;
+        @apply bg-rose-600 text-white hover:bg-rose-500 focus:ring-rose-500 active:bg-rose-700;
     }
     .button-secondary {
-        @apply border border-zinc-700 bg-zinc-800 text-zinc-100 shadow-sm hover:bg-zinc-700 focus:ring-indigo-500;
+        @apply border border-zinc-700 bg-zinc-800 text-zinc-100 shadow-sm hover:bg-zinc-700 focus:ring-rose-500;
     }
     .dropdown-item {
         @apply block w-full px-4 py-2 text-left text-sm leading-5 text-zinc-300 transition hover:bg-zinc-800 hover:text-white focus:bg-zinc-800 focus:outline-none;
     }
     .input {
-        @apply rounded-md border-zinc-700 bg-zinc-950 text-zinc-100 placeholder:text-zinc-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
+        @apply rounded-md border-zinc-700 bg-zinc-950 text-zinc-100 placeholder:text-zinc-500 shadow-sm focus:border-rose-500 focus:ring-rose-500;
     }
     .link {
-        @apply text-sm font-medium text-zinc-400 underline-offset-4 transition hover:text-white hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500;
+        @apply text-sm font-medium text-zinc-400 underline-offset-4 transition hover:text-white hover:underline focus:outline-none focus:ring-2 focus:ring-rose-500;
     }
     .nav-link {
         @apply inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium leading-5 text-zinc-400 transition hover:border-zinc-600 hover:text-white focus:outline-none focus:text-white;
     }
     .nav-link-active {
-        @apply border-indigo-400 text-white;
+        @apply border-rose-400 text-white;
     }
     .nav-link-mobile {
         @apply block w-full border-l-4 border-transparent px-4 py-2 text-left text-base font-medium text-zinc-400 transition hover:border-zinc-700 hover:bg-zinc-800 hover:text-white focus:outline-none focus:text-white;
