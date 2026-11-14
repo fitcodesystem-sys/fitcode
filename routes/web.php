@@ -15,7 +15,7 @@ Route::get('/locale/{locale}', LocalizationController::class)->name('locale');
 Route::middleware(Localization::class) -> group(function(){
 
     Route::get('/', function () {
-        return view('dashboard');
+        return view('home');
     }) ->name('home');
 
 
