@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Pessoa extends Model
 {
@@ -14,6 +15,7 @@ class Pessoa extends Model
         'profissao',
         'nascimento',
         'email',
+        'eh_instrutor',
         'contato_emergencia',
         'saude',
         'responsavel_nome',
@@ -21,4 +23,19 @@ class Pessoa extends Model
         'responsavel_contato',
         'responsavel_documento',
     ];
+
+    protected $casts = [
+        'eh_instrutor' => 'boolean',
+    ];
+
+    public function scopeInstrutores(Builder $query): void
+    {
+        $query->where('eh_instrutor', true);
+    }
+
+
+    public function scopeAlunos(Builder $query): void
+    {
+        $query->where('eh_instrutor', false);
+    }
 }

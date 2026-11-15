@@ -7,11 +7,25 @@ use Illuminate\Http\Request;
 
 class PessoaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $pessoas = Pessoa::latest()->paginate(25);
-        return view('pessoas.index', compact('pessoas'));
+        $tipo = $request->query('tipo', 'todos');
+    
+        $query = Pessoa::latest();
+
+        if ($tipo === 'instrutores') {
+            $query->instrutores();
+        } elseif ($tipo === 'alunos') {
+            $query->alunos();
+        }
+
+#        $pessoas = $query->paginate(15);
+        $pessoas = $query->paginate(15)->withQueryString();
+
+        return view('pessoas.index', compact('pessoas', 'tipo'));
     }
+
+
 
     public function create()
     {
@@ -35,6 +49,7 @@ class PessoaController extends Controller
             'email' => ['required', 'email', 'max:128', 'unique:pessoas,email'],            
             'contato_emergencia' => ['required', 'string', 'max:128'],
             'saude' => ['required', 'string'],
+            'eh_instrutor' => ['nullable', 'boolean'],
 
             // Aqui é obrigatório apenas se menor de idade
             'responsavel_nome' => [
@@ -101,6 +116,7 @@ class PessoaController extends Controller
             'email' => ['required', 'email', 'max:128', 'unique:pessoas,email,' . $pessoa->id],
             'contato_emergencia' => ['required', 'string', 'max:128'],
             'saude' => ['required', 'string'],
+            'eh_instrutor' => ['nullable', 'boolean'],
             // Aqui é obrigatório apenas se menor de idade
             'responsavel_nome' => [
                 function ($attribute, $value, $fail) use ($request) {

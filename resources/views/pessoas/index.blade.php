@@ -26,9 +26,25 @@
                 </div>
             @endif
 
+            {{-- Abas de Filtro --}}
+            <div class="flex items-center gap-2 mb-6">
+                <a href="{{ route('pessoas.index', ['tipo' => 'todos']) }}" 
+                   class="px-4 py-2 rounded-lg text-sm font-medium transition {{ ($tipo ?? 'todos') === 'todos' ? 'bg-cyan-600 text-white shadow-[0_0_10px_rgba(6,182,212,0.4)]' : 'bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white hover:bg-zinc-800' }}">
+                    {{ __('Todos') }}
+                </a>
+                <a href="{{ route('pessoas.index', ['tipo' => 'instrutores']) }}" 
+                   class="px-4 py-2 rounded-lg text-sm font-medium transition {{ ($tipo ?? '') === 'instrutores' ? 'bg-cyan-600 text-white shadow-[0_0_10px_rgba(6,182,212,0.4)]' : 'bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white hover:bg-zinc-800' }}">
+                    {{ __('Instrutores') }}
+                </a>
+                <a href="{{ route('pessoas.index', ['tipo' => 'alunos']) }}" 
+                   class="px-4 py-2 rounded-lg text-sm font-medium transition {{ ($tipo ?? '') === 'alunos' ? 'bg-cyan-600 text-white shadow-[0_0_10px_rgba(6,182,212,0.4)]' : 'bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white hover:bg-zinc-800' }}">
+                    {{ __('Alunos') }}
+                </a>
+            </div>
+
             <div class="bg-zinc-900 border border-zinc-800 overflow-hidden shadow-2xl sm:rounded-2xl p-6">
                 @if ($pessoas->isEmpty())
-                    <p class="py-16 text-center text-zinc-500">{{ __('Nenhuma Pessoa cadastrada até o momento.') }}</p>
+                    <p class="py-16 text-center text-zinc-500">{{ __('Nenhuma Pessoa encontrada para este filtro.') }}</p>
                 @else
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm text-left text-zinc-400">
@@ -37,6 +53,7 @@
                                     <th scope="col" class="px-6 py-4">{{ __('Nome') }}</th>
                                     <th scope="col" class="px-6 py-4">{{ __('Email') }}</th>
                                     <th scope="col" class="px-6 py-4">{{ __('Profissão') }}</th>
+                                    <th scope="col" class="px-6 py-4 text-center">{{ __('Perfil') }}</th>
                                     <th scope="col" class="px-6 py-4 text-right">{{ __('Ações') }}</th>
                                 </tr>
                             </thead>
@@ -47,8 +64,18 @@
                                             {{ $pessoa->nome }}
                                         </td>
                                         <td class="px-6 py-4 text-zinc-300">{{ $pessoa->email }}</td>
-                                        {{-- Corrigido de $pessoa->role para $pessoa->profissao --}}
                                         <td class="px-6 py-4 text-zinc-300">{{ $pessoa->profissao }}</td>
+                                        <td class="px-6 py-4 text-center">
+                                            @if($pessoa->eh_instrutor)
+                                                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-cyan-950 text-cyan-300 border border-cyan-800 shadow-[0_0_8px_rgba(6,182,212,0.2)]">
+                                                    {{ __('Instrutor') }}
+                                                </span>
+                                            @else
+                                                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-zinc-800 text-zinc-400 border border-zinc-700">
+                                                    {{ __('Aluno') }}
+                                                </span>
+                                            @endif
+                                        </td>
                                         <td class="px-6 py-4 text-right">
                                             <div class="flex items-center justify-end gap-3">
                                                 <a href="{{ route('pessoas.edit', $pessoa) }}" class="text-cyan-400 hover:text-cyan-300 transition" title="{{ __('Editar') }}">
