@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Pessoa;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
-
 
 class PessoaController extends Controller
 {
     public function index()
     {
-        $pessoas = User::latest()->get();
+        $pessoas = Pessoa::latest()->paginate(25);
         return view('pessoas.index', compact('pessoas'));
     }
 
@@ -23,61 +20,137 @@ class PessoaController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'role' => 'nullable|string',
-            'eh_instrutor' => 'sometimes|boolean'
+        $request->merge([
+            'cpf' => preg_replace('/[^0-9]/', '', $request->cpf),
+            'responsavel_documento' => preg_replace('/[^0-9]/', '', $request->responsavel_documento),
         ]);
 
-        User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => Hash::make(Str::random(40)),
-        'role' => $request->boolean('eh_instrutor') ? 'admin' : 'user', /** ? é um operador que salva admin caso o boolean = 1 e user se boolean = 0 */
-    ]);
+        $validated = $request->validate([
+            'nome' => ['required', 'string', 'max:255'],
+            'cpf' => ['required', 'string', 'max:11', 'unique:pessoas,cpf'],
+            'rg' => ['required', 'string', 'max:9'],
+            'genero' => ['required', 'in:masculino,feminino,outro'],
+            'profissao' => ['required', 'string', 'max:32'],
+            'nascimento' => ['required', 'date'],
+            'email' => ['required', 'email', 'max:128', 'unique:pessoas,email'],            
+            'contato_emergencia' => ['required', 'string', 'max:128'],
+            'saude' => ['required', 'string'],
 
-    return redirect()->route('pessoas.index')
-        ->with('success', __('Usuário cadastrado'));
+            // Aqui é obrigatório apenas se menor de idade
+            'responsavel_nome' => [
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($request->nascimento && \Carbon\Carbon::parse($request->nascimento)->age < 18 && empty($value)) {
+                        $fail(__('O nome do responsável é obrigatório para menores de idade.'));
+                    }
+                },
+                'nullable', 'string', 'max:128'
+            ],
+            'responsavel_parentesco' => [
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($request->nascimento && \Carbon\Carbon::parse($request->nascimento)->age < 18 && empty($value)) {
+                        $fail(__('O parentesco do responsável é obrigatório para menores de idade.'));
+                    }
+                },
+                'nullable', 'string', 'max:128'
+            ],
+            'responsavel_contato' => [
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($request->nascimento && \Carbon\Carbon::parse($request->nascimento)->age < 18 && empty($value)) {
+                        $fail(__('O contato do responsável é obrigatório para menores de idade.'));
+                    }
+                },
+                'nullable', 'string', 'max:128'
+            ],
+            'responsavel_documento' => [
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($request->nascimento && \Carbon\Carbon::parse($request->nascimento)->age < 18 && empty($value)) {
+                        $fail(__('O documento do responsável é obrigatório para menores de idade.'));
+                    }
+                },
+                'nullable', 'string', 'max:11'
+            ],
+        ]);
+        $validated['responsavel_nome'] = $validated['responsavel_nome'] ?? null;
+        $validated['responsavel_parentesco'] = $validated['responsavel_parentesco'] ?? null;
+        $validated['responsavel_contato'] = $validated['responsavel_contato'] ?? null;
+        $validated['responsavel_documento'] = $validated['responsavel_documento'] ?? null;
+        Pessoa::create($validated);
 
-       
-
-        return redirect()->route('pessoas.index')->with('success', __('Usuário cadastrado'));
+        return redirect()->route('pessoas.index')
+            ->with('success', __('Pessoa cadastrada com sucesso!'));
     }
 
-
-  
-     
-    public function edit(User $pessoa)
+    public function edit(Pessoa $pessoa)
     {
         return view('pessoas.edit', compact('pessoa'));
     }
 
-    
-    public function update(Request $request, User $pessoa)
+    public function update(Request $request, Pessoa $pessoa)
     {
-         $request->validate([
-            
-            'name' => 'required|string|max:255',
-            'email'=> 'required|string|max:255',
-            
-           
+        $request->merge([
+            'cpf' => preg_replace('/[^0-9]/', '', $request->cpf),
+            'responsavel_documento' => preg_replace('/[^0-9]/', '', $request->responsavel_documento),
         ]);
-
+        $validated = $request->validate([
+            'nome' => ['required', 'string', 'max:255'],
+            'cpf' => ['required', 'string', 'max:11', 'unique:pessoas,cpf,' . $pessoa->id],
+            'rg' => ['required', 'string', 'max:9'],
+            'genero' => ['required', 'in:masculino,feminino,outro'],
+            'profissao' => ['required', 'string', 'max:32'],
+            'nascimento' => ['required', 'date'],
+            'email' => ['required', 'email', 'max:128', 'unique:pessoas,email,' . $pessoa->id],
+            'contato_emergencia' => ['required', 'string', 'max:128'],
+            'saude' => ['required', 'string'],
+            // Aqui é obrigatório apenas se menor de idade
+            'responsavel_nome' => [
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($request->nascimento && \Carbon\Carbon::parse($request->nascimento)->age < 18 && empty($value)) {
+                        $fail(__('O nome do responsável é obrigatório para menores de idade.'));
+                    }
+                },
+                'nullable', 'string', 'max:128'
+            ],
+            'responsavel_parentesco' => [
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($request->nascimento && \Carbon\Carbon::parse($request->nascimento)->age < 18 && empty($value)) {
+                        $fail(__('O parentesco do responsável é obrigatório para menores de idade.'));
+                    }
+                },
+                'nullable', 'string', 'max:128'
+            ],
+            'responsavel_contato' => [
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($request->nascimento && \Carbon\Carbon::parse($request->nascimento)->age < 18 && empty($value)) {
+                        $fail(__('O contato do responsável é obrigatório para menores de idade.'));
+                    }
+                },
+                'nullable', 'string', 'max:128'
+            ],
+            'responsavel_documento' => [
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($request->nascimento && \Carbon\Carbon::parse($request->nascimento)->age < 18 && empty($value)) {
+                        $fail(__('O documento do responsável é obrigatório para menores de idade.'));
+                    }
+                },
+                'nullable', 'string', 'max:11'
+            ],
+        ]);
+        $validated['responsavel_nome'] = $validated['responsavel_nome'] ?? null;
+        $validated['responsavel_parentesco'] = $validated['responsavel_parentesco'] ?? null;
+        $validated['responsavel_contato'] = $validated['responsavel_contato'] ?? null;
+        $validated['responsavel_documento'] = $validated['responsavel_documento'] ?? null;
         
-    
+        $pessoa->update($validated);
 
-
-        $pessoa->update($request->all());
-
-        return redirect()->route('pessoas.index')->with('success', __('usuário atualizado'));
+        return redirect()->route('pessoas.index')
+            ->with('success', __('Pessoa atualizada com sucesso!'));
     }
 
-
-
-    public function destroy(User $pessoa)
+    public function destroy(Pessoa $pessoa)
     {
         $pessoa->delete();
-        return redirect()->route('pessoas.index')->with('success', __('usuário removido'));
+        
+        return redirect()->route('pessoas.index')
+            ->with('success', __('Pessoa removida com sucesso!'));
     }
 }
