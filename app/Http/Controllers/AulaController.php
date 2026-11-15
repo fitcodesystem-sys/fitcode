@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aula;
+use App\Models\Pessoa;
 use Illuminate\Http\Request;
 
 class AulaController extends Controller
@@ -13,9 +14,15 @@ class AulaController extends Controller
         return view('aulas.index', compact('aulas'));
     }
 
+#    public function create()
+#    {
+#        return view('aulas.create');
+#    }
+
     public function create()
     {
-        return view('aulas.create');
+        $instrutores = Pessoa::instrutores()->orderBy('nome')->get();
+        return view('aulas.create', compact('instrutores'));
     }
 
     public function store(Request $request)
@@ -38,7 +45,8 @@ class AulaController extends Controller
      */
     public function edit(Aula $aula)
     {
-        return view('aulas.edit', compact('aula'));
+        $instrutores = Pessoa::instrutores()->orderBy('nome')->get();
+        return view('aulas.edit', compact('aula', 'instrutores'));
     }
 
     /**

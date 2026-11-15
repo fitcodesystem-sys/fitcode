@@ -22,9 +22,16 @@
 
                     <!-- Instrutor -->
                     <div>
-                        <x-input-label for="instrutor" :value="__('Instrutor')" />
-                        <x-text-input id="instrutor" name="instrutor" type="text" class="mt-1 block w-full" :value="old('instrutor', $aula->instrutor)"  />
-                        <x-input-error :messages="$errors->get('instrutor')" class="mt-2" />
+                        <x-input-label for="instrutor_id" :value="__('Instrutor')" />
+                        <select id="instrutor_id" name="instrutor_id" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-cyan-500 focus:ring-cyan-500 rounded-md shadow-sm" required>
+                            <option value="">{{ __('Selecione um instrutor...') }}</option>
+                            @foreach ($instrutores as $instrutor)
+                                <option value="{{ $instrutor->id }}" {{ old('instrutor_id', $aula->instrutor_id) == $instrutor->id ? 'selected' : '' }}>
+                                    {{ $instrutor->nome }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <x-input-error :messages="$errors->get('instrutor_id')" class="mt-2" />
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
