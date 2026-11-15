@@ -12,7 +12,7 @@
                 <form action="{{ route('aulas.store') }}" method="POST" class="space-y-6">
                     @csrf
 
-                    <div class="flex mt-4 justify-end">
+                    <div class="flex mt-4 justify-start">
                         <label for="eh_instrutor" class="inline-flex items-center">
                             <input id="eh_instrutor" type="checkbox" class="rounded border-gray-300 text-rose-600 shadow-sm focus:ring-rose-500" name="eh_instrutor">
                             <span class="ms-2 text-sm text-zinc-400">{{ __('É instrutor?') }}</span>
@@ -33,7 +33,7 @@
                         <x-input-error :messages="$errors->get('instrutor_id')" class="mt-2" />
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid gap-6">
                         <!-- Aula Cadastrada -->
                         <div>
                             <x-input-label for="horario" :value="__('Aula Cadastrada')" />
