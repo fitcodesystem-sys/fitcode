@@ -9,7 +9,7 @@
             <h2 class="text-xl font-semibold leading-tight text-white">
                 {{ __('Gerenciar Pessoas') }}
             </h2>
-            <a href="{{ route('aulas.create') }}" class="button button-primary">
+            <a href="{{ route('pessoas.create') }}" class="button button-primary">
                 {{ __('+ Adicionar Pessoa') }}
             </a>
         </div>
@@ -25,7 +25,7 @@
             @endif
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
-                @if ($aulas->isEmpty())
+                @if ($pessoas->isEmpty())
                     <p class="py-10 text-center text-zinc-400">{{ __('Nenhuma Pessoa cadastrada até o momento.') }}</p>
                 @else
                     <div class="overflow-x-auto">
@@ -34,24 +34,24 @@
                                 <tr>
                                     <th scope="col" class="px-6 py-3">{{ __('Nome') }}</th>
                                     <th scope="col" class="px-6 py-3">{{ __('Email') }}</th>
-                                    <th scope="col" class="px-6 py-3">{{ __('Aula Cadastrada') }}</th>
-                                    <th scope="col" class="px-6 py-3 text-right">{{ __('Ações') }}</th>
+                                    <th scope="col" class="px-6 py-3">{{ __('Cargo') }}</th>
+                                    <th scope="col" class="px-6 py-3 text-right">{{ __('Editar') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($aulas as $aula)
+                                @foreach ($pessoas as $pessoa)
                                     <tr class="bg-white border-b bg-zinc-800/60 border-zinc-800 hover:bg-zinc-800/40">
                                         <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                            {{ $aula->nome }}
+                                            {{ $pessoa->name }}
                                         </td>
-                                        <td class="px-6 py-4">{{ $aula->instrutor_id }}</td>
-                                        <td class="px-6 py-4">{{ $aula->horario }}</td>
+                                        <td class="px-6 py-4">{{ $pessoa->email }}</td>
+                                        <td class="px-6 py-4">{{ $pessoa->role}}</td>
                                         <td class="px-6 py-4 text-right">
                                             <div class="flex items-center justify-end gap-3 justify-items-center">
-                                            <a href="{{ route('aulas.edit', $aula) }}" class="text-rose-400 transition hover:text-rose-300">
+                                            <a href="{{ route('pessoas.edit', $pessoa) }}" class="text-rose-400 transition hover:text-rose-300">
                                                 <x-lucide-pencil class="w-5 h-5" />
                                             </a>
-                                            <form action="{{ route('aulas.destroy', $aula) }}" method="POST" onsubmit="return confirm(window.traducao.excluirPessoa);" class="inline">
+                                            <form action="{{ route('pessoas.destroy', $pessoa) }}" method="POST" onsubmit="return confirm(window.traducao.excluirPessoa);" class="inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300 transition-colors">

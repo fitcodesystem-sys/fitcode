@@ -8,6 +8,7 @@ use App\Http\Middleware\VerificaAdm;
 use App\Http\Middleware\Localization;
 use App\Http\Controllers\MatriculaController;
 use App\Http\Controllers\GraficoController;
+use App\Http\Controllers\PessoaController;
 
 
 
@@ -26,15 +27,14 @@ Route::middleware(Localization::class) -> group(function(){
 
         Route::resource('matriculas', MatriculaController::class);
         Route::get('/dashboard',[GraficoController::class,'index'])->name('dashboard');  
+        Route::resource('pessoas', PessoaController::class);
             
 
             
 
     });
     
-        Route::get('/pessoas', function () {
-        return view('pessoas');
-    }) ->name('pessoas');
+        
 
     
     Route::middleware('auth')->group(function () {
