@@ -56,15 +56,52 @@
         </p>
     </div>
 
-    <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <!-- geração dos cartões -->
+    <!-- geração dos cartões -->
+    <!-- section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <template x-for="(metric, key) in metrics" :key="key">
             <div class="info-blocks p-5 box-border">
                 <span x-text="metric.label"></span>
                 <span x-text="metric.value" class="mt-4 text-2xl font-bold tracking-tight text-foreground"></span>
             </div>
         </template>
-    </section>
+    </section -->
+
+    {{-- Grid de Indicadores (5 Cards Lado a Lado) --}}
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
+    
+        {{-- Total de Alunos --}}
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+            <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">{{ __('Total de Alunos') }}</span>
+            <p class="text-3xl font-extrabold text-white mt-4">{{ $totalAlunos }}</p>
+        </div>
+
+        {{-- Instrutores --}}
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+            <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">{{ __('Instrutores') }}</span>
+            <p class="text-3xl font-extrabold text-cyan-400 mt-4">{{ $totalInstrutores }}</p>
+        </div>
+
+        {{-- Receita Total --}}
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+            <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">{{ __('Receita Total') }}</span>
+            <p class="text-xl sm:text-2xl font-extrabold text-emerald-400 mt-4">R$ {{ number_format($totalReceitas, 2, ',', '.') }}</p>
+        </div>
+
+        {{-- Matrículas Ativas --}}
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+            <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">{{ __('Matrículas Ativas') }}</span>
+            <p class="text-3xl font-extrabold text-emerald-400 mt-4">{{ $matriculasAtivas }}</p>
+        </div>
+
+        {{-- Matrículas Vencidas --}}
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+            <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">{{ __('Matrículas Vencidas') }}</span>
+            <p class="text-3xl font-extrabold text-red-400 mt-4">{{ $matriculasVencidas }}</p>
+        </div>
+
+    </div>
+
+
 
     <!-- charts -->
         <div x-data="aulasChart" class="grid gap-6 xl:grid-cols-1 sm:grid-cols-1">
