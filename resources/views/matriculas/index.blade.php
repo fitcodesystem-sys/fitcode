@@ -5,7 +5,7 @@
                 {{ __('Gerenciar Matrículas') }}
             </h2>
             <a href="{{ route('matriculas.create') }}" class="px-4 py-2 bg-cyan-600 text-white rounded-lg text-sm font-semibold hover:bg-cyan-500 transition shadow-[0_0_15px_rgba(6,182,212,0.5)]">
-                + Nova Matrícula
+                {{ __('+ Nova Matrícula') }}
             </a>
         </div>
     </x-slot>
@@ -19,19 +19,19 @@
                    class="px-5 py-2 rounded-lg font-medium transition flex items-center gap-2 text-sm
                    {{ ($currentFilter ?? 'todas') === 'todas' ? 'bg-zinc-800 text-white shadow-md' : 'text-zinc-400 hover:text-white hover:bg-zinc-800/60' }}">
                     <x-lucide-list class="w-4 h-4" />
-                    Todas
+                    {{ __('Todas') }}
                 </a>
                 <a href="{{ route('matriculas.index', ['status' => 'ativas']) }}" 
                    class="px-5 py-2 rounded-lg font-medium transition flex items-center gap-2 text-sm
                    {{ ($currentFilter ?? '') === 'ativas' ? 'bg-emerald-950 text-emerald-300 border border-emerald-800 shadow-[0_0_10px_rgba(16,185,129,0.3)]' : 'text-zinc-400 hover:text-white hover:bg-zinc-800/60' }}">
                     <x-lucide-check-circle class="w-4 h-4" />
-                    Ativas
+                    {{ __('Ativas') }}
                 </a>
                 <a href="{{ route('matriculas.index', ['status' => 'vencidas']) }}" 
                    class="px-5 py-2 rounded-lg font-medium transition flex items-center gap-2 text-sm
                    {{ ($currentFilter ?? '') === 'vencidas' ? 'bg-red-950 text-red-300 border border-red-800 shadow-[0_0_10px_rgba(239,68,68,0.3)]' : 'text-zinc-400 hover:text-white hover:bg-zinc-800/60' }}">
                     <x-lucide-x-circle class="w-4 h-4" />
-                    Vencidas
+                    {{ __('Vencidas') }}
                 </a>
             </div>
 
@@ -40,12 +40,12 @@
                 <table class="w-full text-left text-sm">
                     <thead class="border-b border-zinc-800 bg-zinc-800/30">
                         <tr>
-                            <th class="px-6 py-4 font-semibold text-zinc-300">Aluno</th>
-                            <th class="px-6 py-4 font-semibold text-zinc-300">Aula</th>
-                            <th class="px-6 py-4 font-semibold text-zinc-300">Data Início</th>
-                            <th class="px-6 py-4 font-semibold text-zinc-300">Data Fim</th>
-                            <th class="px-6 py-4 font-semibold text-zinc-300 text-center">Status</th>
-                            <th class="px-6 py-4 font-semibold text-zinc-300 text-right">Ações</th>
+                            <th class="px-6 py-4 font-semibold text-zinc-300">{{ __('Aluno') }}</th>
+                            <th class="px-6 py-4 font-semibold text-zinc-300">{{ __('Aula') }}</th>
+                            <th class="px-6 py-4 font-semibold text-zinc-300">{{ __('Data Início') }}</th>
+                            <th class="px-6 py-4 font-semibold text-zinc-300">{{ __('Data Fim') }}</th>
+                            <th class="px-6 py-4 font-semibold text-zinc-300 text-center">{{ __('Status') }}</th>
+                            <th class="px-6 py-4 font-semibold text-zinc-300 text-right">{{ __('Ações') }}</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-zinc-800">
@@ -66,12 +66,12 @@
                                     @if(\Carbon\Carbon::parse($matricula->data_fim)->isPast() || $matricula->status === 'vencida')
                                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-950 text-red-300 border border-red-800 shadow-[0_0_8px_rgba(239,68,68,0.4)]">
                                             <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-                                            Vencida
+                                            {{ __('Vencida') }}
                                         </span>
                                     @else
                                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-300 border border-emerald-800 shadow-[0_0_8px_rgba(16,185,129,0.4)]">
                                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                            Ativa
+                                            {{ __('Ativa') }}
                                         </span>
                                     @endif
                                 </td>

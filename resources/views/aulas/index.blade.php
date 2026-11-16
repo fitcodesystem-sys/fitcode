@@ -75,7 +75,7 @@
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 text-right">
-                                    <div class="flex items-center justify-end gap-3">
+                                    <div class="flex justify-end gap-3">
                                         <a href="{{ route('aulas.show', $aula) }}" class="text-zinc-400 hover:text-white transition font-medium text-xs">
                                             {{ __('Visualizar') }}
                                         </a>

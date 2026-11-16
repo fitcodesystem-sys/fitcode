@@ -70,8 +70,8 @@
                         <h3 class="text-lg font-bold text-white mt-2">
                             {{ $matricula->aula->nome ?? __('Aula não encontrada') }}
                         </h3>
-                        <p class="text-sm text-zinc-400 mt-1">Horário: {{ $matricula->aula->horario ?? 'N/A' }}</p>
-                        <p class="text-sm text-zinc-400">Capacidade: {{ $matricula->aula->capacidade_maxima ?? 'N/A' }} alunos</p>
+                        <p class="text-sm text-zinc-400 mt-1">{{ __('Horário:') }} {{ $matricula->aula->horario ?? 'N/A' }}</p>
+                        <p class="text-sm text-zinc-400">{{ __('Capacidade:') }} {{ $matricula->aula->capacidade_maxima ?? 'N/A' }} alunos</p>
                     </div>
                 </div>
 
@@ -80,7 +80,7 @@
                     <div>
                         <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">{{ __('Período de Vigência') }}</span>
                         <p class="text-sm font-medium text-white mt-1">
-                            {{ optional($matricula->data_inicio)->format('d/m/Y') ?? 'Não informada' }} até 
+                            {{ optional($matricula->data_inicio)->format('d/m/Y') ?? 'Não informada' }} {{ __('até') }} 
                             {{ optional($matricula->data_fim)->format('d/m/Y') ?? 'Não informada' }}
                         </p>
                     </div>
