@@ -41,7 +41,7 @@
                     <thead class="border-b border-zinc-800 bg-zinc-800/30">
                         <tr>
                             <th class="px-6 py-4 font-semibold text-zinc-300">Aluno</th>
-                            <th class="px-6 py-4 font-semibold text-zinc-300">Plano</th>
+                            <th class="px-6 py-4 font-semibold text-zinc-300">Aula</th>
                             <th class="px-6 py-4 font-semibold text-zinc-300">Data Início</th>
                             <th class="px-6 py-4 font-semibold text-zinc-300">Data Fim</th>
                             <th class="px-6 py-4 font-semibold text-zinc-300 text-center">Status</th>
@@ -57,7 +57,7 @@
                                     </div>
                                     {{ $matricula->aluno->nome ?? __('Aluno não encontrado') }}
                                 </td>
-                                <td class="px-6 py-4 text-zinc-300">{{ $matricula->plano->nome ?? __('Plano') }}</td>
+                                <td class="px-6 py-4 text-zinc-300">{{ $matricula->aula->nome ?? __('Aula') }}</td>
                                 <td class="px-6 py-4 text-zinc-400">{{ \Carbon\Carbon::parse($matricula->data_inicio)->format('d/m/Y') }}</td>
                                 <td class="px-6 py-4 text-zinc-400 font-medium">
                                     {{ \Carbon\Carbon::parse($matricula->data_fim)->format('d/m/Y') }}

@@ -8,11 +8,25 @@ use Illuminate\Http\Request;
 
 class AulaController extends Controller
 {
-    public function index()
-    {
-        $aulas = Aula::latest()->get();
-        return view('aulas.index', compact('aulas'));
+    public function index(Request $request)
+{
+    $instrutorId = $request->query('instrutor_id');
+
+    // Inicia a query com o relacionamento do instrutor
+    $query = Aula::with('instrutor');
+
+    // Filtra por instrutor se informado e válido
+    if ($instrutorId && $instrutorId !== 'todos') {
+        $query->where('instrutor_id', $instrutorId);
     }
+
+    $aulas = $query->latest()->paginate(10)->withQueryString();
+    
+    // Busca apenas as pessoas que são instrutores para alimentar as abas
+    $instrutores = Pessoa::where('eh_instrutor', true)->orderBy('nome')->get();
+
+    return view('aulas.index', compact('aulas', 'instrutores', 'instrutorId'));
+}
 
 #    public function create()
 #    {
@@ -31,7 +45,7 @@ class AulaController extends Controller
             'nome' => 'required|string|max:255',
             'horario' => 'required|string',
             'capacidade_maxima' => 'required|integer|min:1',
-            'instrutor_id' => 'required|integer|max:3',
+            'instrutor_id' => ['required', 'exists:pessoas,id'],
         ]);
 
         Aula::create($request->all());
@@ -58,7 +72,7 @@ class AulaController extends Controller
             'nome' => 'required|string|max:255',
             'horario' => 'required|string',
             'capacidade_maxima' => 'required|integer|min:1',
-            'instrutor' => 'required|string|max:255',
+            'instrutor_id' => ['required', 'exists:pessoas,id'],
             'descricao' => 'nullable|string',
         ]);
 
@@ -67,7 +81,13 @@ class AulaController extends Controller
         return redirect()->route('aulas.index')->with('success', __('Aula atualizada com sucesso!'));
     }
 
+    public function show(Aula $aula)
+    {
+    // Carrega o instrutor e as matrículas com seus respectivos alunos
+        $aula->load(['instrutor', 'matriculas.aluno']);
 
+        return view('aulas.show', compact('aula'));
+    }
 
     public function destroy(Aula $aula)
     {

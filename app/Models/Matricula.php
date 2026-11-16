@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Carbon\Carbon;
 
 class Matricula extends Model
 {
@@ -18,6 +17,7 @@ class Matricula extends Model
     protected $fillable = [
         'pessoa_id',
         'aula_id',
+        'data_matricula',
         'valor_pago',
         'data_pagamento',
         'data_inicio',
@@ -28,6 +28,7 @@ class Matricula extends Model
 
     // Casts automáticos para conversão de tipos de dados
     protected $casts = [
+        'data_pagamento' => 'date',
         'data_inicio' => 'date',
         'data_fim' => 'date',
         'valor_pago' => 'decimal:2',
@@ -36,11 +37,15 @@ class Matricula extends Model
     /**
      * Relacionamento: Uma matrícula pertence a uma Pessoa (aluno).
      */
-    public function pessoa()
+
+    public function aluno()
     {
         return $this->belongsTo(Pessoa::class, 'pessoa_id');
     }
 
+    /**
+     * Relacionamento: Uma matrícula pertence a um Plano.
+     */
     public function aula()
     {
         return $this->belongsTo(Aula::class, 'aula_id');

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Matricula;
+use App\Models\Pessoa;
+use App\Models\Aula;
 use Illuminate\Http\Request;
 
 class MatriculaController extends Controller
@@ -16,7 +18,7 @@ class MatriculaController extends Controller
         $currentFilter = $request->query('status', 'todas'); // Padrão é 'todas'
 
         // Inicia a query base carregando relacionamentos para evitar N+1 queries
-        $query = Matricula::with(['aluno', 'plano'])->orderBy('data_fim', 'asc');
+        $query = Matricula::with(['aluno', 'aula'])->orderBy('data_fim', 'asc');
 
         // Aplica o filtro baseado na seleção do usuário usando as scopes do Model
         if ($currentFilter === 'ativas') {
@@ -39,28 +41,58 @@ class MatriculaController extends Controller
     public function create()
     {
         // Busca os alunos (Pessoas) cadastrados para preencher o select
-        $alunos = Pessoa::all();
+#        $alunos = Pessoa::all();
+        $pessoas = Pessoa::orderBy('nome')->get();
+        $aulas = Aula::orderBy('nome')->get();
 
-        return view('matriculas.create', compact('alunos'));
+#        return view('matriculas.create', compact('alunos'));
+        return view('matriculas.create', compact('pessoas', 'aulas'));
     }
 
+
+    /**
+     * Exibe o formulário de edição de uma matrícula existente.
+     */
+    public function edit(Matricula $matricula)
+    {
+        $pessoas = Pessoa::orderBy('nome')->get();
+        $aulas = Aula::orderBy('nome')->get();
+
+        return view('matriculas.edit', compact('matricula', 'pessoas', 'aulas'));
+    }
+    
     /**
      * Armazena uma nova matrícula no banco de dados.
      */
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'pessoa_id'   => ['required', 'exists:pessoas,id'],
-            'plano_id'    => ['required', 'string', 'max:255'],
-            'data_inicio' => ['required', 'date'],
-            'data_fim'    => ['required', 'date', 'after_or_equal:data_inicio'],
-            'status'      => ['required', 'string', 'in:ativa,vencida'],
+            'pessoa_id' => ['required', 'exists:pessoas,id'],
+            'aula_id' => ['required', 'exists:aulas,id'],
+            'data_matricula' => ['required', 'date'],
+            'valor_pago' => ['required', 'numeric', 'min:0'],
+            'data_pagamento' => ['nullable', 'date'],
+            'data_inicio' => ['nullable', 'date'],
+            'data_fim' => ['nullable', 'date', 'after_or_equal:data_inicio'],
+            'observacoes' => ['nullable', 'string', 'max:255'],
+            'status' => ['required', 'in:ativa,vencida,cancelada,pendente'],
         ]);
 
         Matricula::create($validated);
 
         return redirect()->route('matriculas.index')
             ->with('success', __('Matrícula criada com sucesso!'));
+    }
+
+    /**
+    * Exibe os detalhes de uma matrícula específica.
+    */
+    public function show(Matricula $matricula)
+    {
+    // Carrega explicitamente os relacionamentos caso já não venham carregados
+        $matricula->load(['aluno', 'aula']);
+
+        return view('matriculas.show', compact('matricula'));
     }
 
 }

@@ -1,28 +1,29 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-zinc-100 leading-tight">
             {{ __('Cadastrar Nova Aula') }}
         </h2>
     </x-slot>
 
-    <div class="py-4">
-        <div class="mx-auto w-full max-w-3xl rounded-xl border border-zinc-800 bg-zinc-900 p-5 shadow-sm sm:p-6">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
-                
-                <form action="{{ route('aulas.store') }}" method="POST" class="space-y-6">
-                    @csrf
+    <div class="py-12">
+        <div class="mx-auto w-full max-w-4xl rounded-2xl border border-zinc-800 bg-zinc-900 p-6 sm:p-8 shadow-2xl">
+            
+            <form action="{{ route('aulas.store') }}" method="POST" class="space-y-6">
+                @csrf
 
-                    <!-- Nome da Aula -->
-                    <div>
-                        <x-input-label for="nome" :value="__('Nome da Aula')" />
-                        <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome')"  autofocus />
-                        <x-input-error :messages="$errors->get('nome')" class="mt-2" />
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    {{-- Nome da Aula --}}
+                    <div class="md:col-span-2">
+                        <x-input-label for="nome" :value="__('Nome da Aula')" class="text-zinc-300" />
+                        <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full bg-zinc-800 border-zinc-700 text-zinc-100 focus:border-cyan-500 focus:ring-cyan-500" :value="old('nome')" required autofocus placeholder="{{ __('Ex: Musculação Avançada, Pilates, Spinning...') }}" />
+                        <x-input-error :messages="$errors->get('nome')" class="mt-2 text-red-400" />
                     </div>
 
-                    <!-- Instrutor -->
-                    <div>
-                        <x-input-label for="instrutor_id" :value="__('Instrutor')" />
-                        <select id="instrutor_id" name="instrutor_id" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-cyan-500 focus:ring-cyan-500 rounded-md shadow-sm" required>
+                    {{-- Instrutor --}}
+                    <div class="md:col-span-2">
+                        <x-input-label for="instrutor_id" :value="__('Instrutor')" class="text-zinc-300" />
+                        <select id="instrutor_id" name="instrutor_id" class="mt-1 block w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-cyan-500 focus:ring-cyan-500" required>
                             <option value="">{{ __('Selecione um instrutor...') }}</option>
                             @foreach ($instrutores as $instrutor)
                                 <option value="{{ $instrutor->id }}" {{ old('instrutor_id') == $instrutor->id ? 'selected' : '' }}>
@@ -30,44 +31,43 @@
                                 </option>
                             @endforeach
                         </select>
-                        <x-input-error :messages="$errors->get('instrutor_id')" class="mt-2" />
+                        <x-input-error :messages="$errors->get('instrutor_id')" class="mt-2 text-red-400" />
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Horário -->
-                        <div>
-                            <x-input-label for="horario" :value="__('Horário (ex: Seg/Qua 19:00)')" />
-                            <x-text-input id="horario" name="horario" type="text" class="mt-1 block w-full" :value="old('horario')"  />
-                            <x-input-error :messages="$errors->get('horario')" class="mt-2" />
-                        </div>
-
-                        <!-- Capacidade Máxima -->
-                        <div>
-                            <x-input-label for="capacidade_maxima" :value="__('Capacidade Máxima')" />
-                            <x-text-input id="capacidade_maxima" name="capacidade_maxima" type="number" class="mt-1 block w-full" min="1" :value="old('capacidade_maxima')"  />
-                            <x-input-error :messages="$errors->get('capacidade_maxima')" class="mt-2" />
-                        </div>
-                    </div>
-
-                    <!-- Descrição -->
+                    {{-- Horário --}}
                     <div>
-                        <x-input-label for="descricao" :value="__('Descrição (Opcional)')" />
-                        <textarea id="descricao" name="descricao" rows="3" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-rose-500 dark:focus:border-rose-600 focus:ring-rose-500 dark:focus:ring-rose-600 rounded-md shadow-sm">{{ old('descricao') }}</textarea>
-                        <x-input-error :messages="$errors->get('descricao')" class="mt-2" />
+                        <x-input-label for="horario" :value="__('Horário (ex: Seg/Qua 19:00)')" class="text-zinc-300" />
+                        <x-text-input id="horario" name="horario" type="text" class="mt-1 block w-full bg-zinc-800 border-zinc-700 text-zinc-100 focus:border-cyan-500 focus:ring-cyan-500" :value="old('horario')" required placeholder="{{ __('Ex: Seg/Qua 19:00') }}" />
+                        <x-input-error :messages="$errors->get('horario')" class="mt-2 text-red-400" />
                     </div>
 
-                    <!-- Botões -->
-                    <div class="flex items-center justify-end gap-4 border-t border-zinc-800 pt-5">
-                        <a href="{{ route('aulas.index') }}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 underline">
-                            {{ __('Cancelar') }}
-                        </a>
-                        <x-primary-button>
-                            {{ __('Salvar Aula') }}
-                        </x-primary-button>
+                    {{-- Capacidade Máxima --}}
+                    <div>
+                        <x-input-label for="capacidade_maxima" :value="__('Capacidade Máxima')" class="text-zinc-300" />
+                        <x-text-input id="capacidade_maxima" name="capacidade_maxima" type="number" class="mt-1 block w-full bg-zinc-800 border-zinc-700 text-zinc-100 focus:border-cyan-500 focus:ring-cyan-500" min="1" :value="old('capacidade_maxima', 20)" required />
+                        <x-input-error :messages="$errors->get('capacidade_maxima')" class="mt-2 text-red-400" />
                     </div>
-                </form>
 
-            </div>
+                    {{-- Descrição --}}
+                    <div class="md:col-span-2">
+                        <x-input-label for="descricao" :value="__('Descrição (Opcional)')" class="text-zinc-300" />
+                        <textarea id="descricao" name="descricao" rows="3" class="mt-1 block w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-cyan-500 focus:ring-cyan-500" placeholder="{{ __('Breve descrição sobre a aula...') }}">{{ old('descricao') }}</textarea>
+                        <x-input-error :messages="$errors->get('descricao')" class="mt-2 text-red-400" />
+                    </div>
+
+                </div>
+
+                {{-- Botões de Ação --}}
+                <div class="flex items-center justify-end gap-4 border-t border-zinc-800 pt-6">
+                    <a href="{{ route('aulas.index') }}" class="text-sm text-zinc-400 hover:text-zinc-100 underline transition">
+                        {{ __('Cancelar') }}
+                    </a>
+                    <button type="submit" class="px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg font-semibold transition shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+                        {{ __('Cadastrar Aula') }}
+                    </button>
+                </div>
+            </form>
+
         </div>
     </div>
 </x-app-layout>
