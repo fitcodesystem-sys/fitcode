@@ -26,6 +26,17 @@ class PessoaController extends Controller
     }
 
 
+    public function show(Pessoa $pessoa)
+    {
+        if ($pessoa->eh_instrutor) {
+            $pessoa->load('aulas'); // Aulas ministradas pelo instrutor
+        } else {
+            $pessoa->load('matriculas.aula'); // Matrículas e turmas do aluno
+        }
+        return view('pessoas.show', compact('pessoa'));
+    }
+
+
 
     public function create()
     {

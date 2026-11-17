@@ -38,4 +38,20 @@ class Pessoa extends Model
     {
         $query->where('eh_instrutor', false);
     }
+
+    /**
+     * Relacionamento: Uma pessoa (quando instrutor) ministra muitas aulas.
+     */
+    public function aulas()
+    {
+        return $this->hasMany(Aula::class, 'instrutor_id');
+    }
+
+    /**
+     * Relacionamento: Uma pessoa (quando aluno) possui muitas matrículas.
+     */
+    public function matriculas()
+    {
+        return $this->hasMany(Matricula::class, 'pessoa_id');
+    }
 }
