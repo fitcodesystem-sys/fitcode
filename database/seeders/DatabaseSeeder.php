@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Aula;
+use App\Models\Pessoa;
+use App\Models\Matricula;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,11 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        Pessoa::factory()->count(50)->create();
+        if (Pessoa::where('eh_instrutor', true)->count() === 0) {
+            Pessoa::factory()->count(3)->state(['eh_instrutor' => true])->create();
+        }
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        Aula::factory()->count(10)->create();
+
+        Matricula::factory()->count(60)->create();
     }
 }
