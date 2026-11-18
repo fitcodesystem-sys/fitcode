@@ -5,7 +5,7 @@
         @json($aulas->pluck('nome')),
        
         dados:
-        @json($aulas->pluck('users_count'))
+        @json($aulas->pluck('matriculas_count'))
     }
     window.translations = {
         students: @json(__('Alunos')),
@@ -109,6 +109,5 @@
                 <canvas x-ref="canvas"></canvas>
             </div>
         </div>
-    </section>
 
 </x-dash>
