@@ -218,5 +218,18 @@
     "Valor Pago": "Amount Paid",
     "Não informada": "Not provided",
     "até": "to",
-    "Pendente / Não paga": "Pending / Unpaid"
+    "Pendente / Não paga": "Pending / Unpaid",
+    "Cadastrado em": "Registered on",
+    "Aulas Ministradas": "Classes Taught",
+    "Detalhes da Pessoa": "Person Details",
+    "Tem certeza que deseja excluir esta pessoa?": "Are you sure you want to delete this person?",
+    "Pessoa removida com sucesso!": "Person successfully removed!",
+    "Editar Pessoa": "Edit Person",
+    "Atualizar Pessoa": "Update Person",
+    "Obrigatório apenas para menores de 18 anos.": "Mandatory only for those under 18 years of age.",
+    "Pessoa atualizada com sucesso!": "Person updated successfully!",
+    "Nenhuma Pessoa encontrada para este filtro.": "No person found for this filter.",
+    "Não atribuído": "Not assigned",
+    "Nenhuma aula encontrada para este instrutor.": "No classes found for this instructor.",
+    "Pessoa cadastrada com sucesso!": "Person registered successfully!"
 }
